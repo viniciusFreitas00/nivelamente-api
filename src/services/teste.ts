@@ -1,5 +1,4 @@
 import database from '../database';
-import config from '../config';
 
 async function teste() {
   try {
