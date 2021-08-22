@@ -14,15 +14,13 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "pg": "^8.6.0",
-    "pg-prepared": "^2.5.13"
+    "pg-promise": "^10.11.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.7",
     "@types/express": "^4.17.8",
     "@types/jsonwebtoken": "^8.5.0",
-    "@types/pg": "^7.14.11",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
     "eslint": "6.8.0",

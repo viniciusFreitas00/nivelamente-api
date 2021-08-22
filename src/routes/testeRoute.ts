@@ -1,12 +1,15 @@
 import { Router } from 'express';
 
 //import Test from '../services/Test.services';
+import teste from '../services/teste';
 
-const testRouter = Router();
+const testeRouter = Router();
 
-testRouter.get('/', async (request, response) => {
+testeRouter.get('/', async (request, response) => {
 
-  return response.json({ data: 'teste' });
+  const aux = await teste();
+
+  return response.json({ data: aux });
 });
 
-export default testRouter;
+export default testeRouter;

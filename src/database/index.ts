@@ -1,14 +1,8 @@
-// import dotenv from 'dotenv';
-// import { Pool } from 'pg';
+import pgPromise from 'pg-promise';
+import config from '../config';
 
-// dotenv.config();
+const pg = pgPromise();
 
-// process.env.NODE_TLS_REJECT_UNAUTHORIZED='0'
-// const connectionString = process.env.DATABASE_URL;
+const database = pg({ connectionString: config.url, ssl: true });
 
-// const pool = new Pool({
-//   connectionString,
-//   ssl: true,
-// });
-
-// export default pool;
+export default database;
