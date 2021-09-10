@@ -38,7 +38,7 @@ coursesRouter.post('/', upload.single('image'), async (request, response) => {
   try {
     const { id } = request.user;
     const { body } = request;
-    const { key } = request.file;
+    const { key } = request.file as Express.Multer.File;
 
     const courses = await CreateCousesServices({ id, key, ...body });
 
