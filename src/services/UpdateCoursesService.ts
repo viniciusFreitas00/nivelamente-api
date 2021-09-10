@@ -17,7 +17,7 @@ async function UpdateCoursesService({
   category,
   status,
 }: Request) {
-  const courses = await database.none(
+  const { rowCount } = await database.result(
     'UPDATE COURSES SET TITLE = $[title], DESCRIPTION = $[description], CATEGORY = $[category], STATUS = $[status], UPDATED_AT = now() WHERE ID = $[courseID] AND USER_ID = $[id]',
     {
       id,
@@ -29,7 +29,7 @@ async function UpdateCoursesService({
     },
   );
 
-  return courses;
+  return !!rowCount;
 }
 
 export default UpdateCoursesService;
