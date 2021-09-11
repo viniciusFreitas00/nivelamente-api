@@ -28,9 +28,9 @@ usersRouter.use(ensureAuthenticated);
 usersRouter.put('/', async (request, response) => {
   try {
     const { id } = request.user;
-    const { body } = request;
+    const { name, password } = request.body;
 
-    const updated = await UpdateUsersServices({ id, ...body });
+    const updated = await UpdateUsersServices({ id, name, password });
 
     return response.json({ updated });
   } catch (error) {

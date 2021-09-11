@@ -37,10 +37,17 @@ coursesRouter.use(ensureAuthenticated);
 coursesRouter.post('/', upload.single('image'), async (request, response) => {
   try {
     const { id } = request.user;
-    const { body } = request;
+    const { title, description, category, status } = request.body;
     const { key } = request.file as Express.Multer.File;
 
-    const courses = await CreateCousesServices({ id, key, ...body });
+    const courses = await CreateCousesServices({
+      id,
+      key,
+      title,
+      description,
+      category,
+      status,
+    });
 
     return response.json(courses);
   } catch (error) {
@@ -51,9 +58,16 @@ coursesRouter.post('/', upload.single('image'), async (request, response) => {
 coursesRouter.put('/', async (request, response) => {
   try {
     const { id } = request.user;
-    const { body } = request;
+    const { courseID, title, description, category, status } = request.body;
 
-    const updated = await UpdateCoursesService({ id, ...body });
+    const updated = await UpdateCoursesService({
+      id,
+      courseID,
+      title,
+      description,
+      category,
+      status,
+    });
 
     return response.json({ updated });
   } catch (error) {
