@@ -13,7 +13,7 @@ async function GetCoursesServices({
     return courses;
   } else {
     let courses = await database.oneOrNone<Courses>(
-      'SELECT * FROM COURSES WHERE ID = $[courseID]',
+      `SELECT * FROM COURSES WHERE ID = $[courseID] AND STATUS = 'published'`,
       { courseID },
     );
     return courses;
