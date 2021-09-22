@@ -1,6 +1,6 @@
 import { hash } from 'bcryptjs';
 
-import database from '../database';
+import database from '../../database';
 
 interface Request {
   id: string;

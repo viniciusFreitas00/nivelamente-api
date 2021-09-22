@@ -1,7 +1,7 @@
 import { hash } from 'bcryptjs';
 
-import database from '../database';
-import User from '../models/User';
+import database from '../../database';
+import User from '../../models/User';
 
 interface Request {
   name: string;
