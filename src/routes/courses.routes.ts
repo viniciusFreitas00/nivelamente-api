@@ -2,17 +2,17 @@ import { Router } from 'express';
 import multer from 'multer';
 import uploadConfig from '../config/upload';
 
-import CreateCousesServices from '../services/CreateCousesServices';
-import UpdateCoursesService from '../services/UpdateCoursesService';
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
-import GetCoursesServices from '../services/GetCoursesServices';
+import CreateCousesServices from '../services/courses/CreateCoursesService';
+import UpdateCoursesService from '../services/courses/UpdateCoursesService';
+import GetCoursesService from '../services/courses/GetCoursesService';
 
 const upload = multer(uploadConfig);
 const coursesRouter = Router();
 
 coursesRouter.get('/', async (request, response) => {
   try {
-    const courses = await GetCoursesServices({});
+    const courses = await GetCoursesService({});
 
     return response.json(courses);
   } catch (error) {
@@ -24,7 +24,7 @@ coursesRouter.get('/:courseID', async (request, response) => {
   try {
     const { courseID } = request.params;
 
-    const courses = await GetCoursesServices({ courseID });
+    const courses = await GetCoursesService({ courseID });
 
     return response.json(courses);
   } catch (error) {

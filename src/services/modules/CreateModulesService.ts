@@ -1,5 +1,5 @@
-import database from '../database';
-import Courses from '../models/Courses';
+import database from '../../database';
+import Courses from '../../models/Courses';
 
 interface Request {
   id: string;

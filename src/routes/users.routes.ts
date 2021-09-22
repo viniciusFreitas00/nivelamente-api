@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import CreateUsersService from '../services/CreateUsersService';
-import UpdateUsersServices from '../services/UpdateUsersServices';
+import CreateUsersService from '../services/users/CreateUsersService';
+import UpdateUsersService from '../services/users/UpdateUsersService';
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
 const usersRouter = Router();
@@ -30,7 +30,7 @@ usersRouter.put('/', async (request, response) => {
     const { id } = request.user;
     const { name, password } = request.body;
 
-    const updated = await UpdateUsersServices({ id, name, password });
+    const updated = await UpdateUsersService({ id, name, password });
 
     return response.json({ updated });
   } catch (error) {
