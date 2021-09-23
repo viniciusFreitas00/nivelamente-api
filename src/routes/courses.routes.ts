@@ -75,4 +75,33 @@ coursesRouter.put('/', async (request, response) => {
   }
 });
 
+coursesRouter.get('/student', async (request, response) => {
+  try {
+    const { id } = request.user;
+
+    const courses = await GetStudetentCourseService({ id });
+
+    return response.json(courses);
+  } catch (error) {
+    return response.status(500).json({ error: error.message });
+  }
+});
+
+coursesRouter.post('/student', async (request, response) => {
+  try {
+    const { id } = request.user;
+    const { course_id, module_id } = request.body;
+
+    const student = await RegisterStudentCourseService({
+      id,
+      course_id,
+      module_id,
+    });
+
+    return response.json(student);
+  } catch (error) {
+    return response.status(500).json({ error: error.message });
+  }
+});
+
 export default coursesRouter;
