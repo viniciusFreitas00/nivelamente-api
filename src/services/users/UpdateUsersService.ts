@@ -14,8 +14,8 @@ async function UpdateUsersServices({ id, name, password }: Request) {
   const { rowCount } = await database.result(
     'UPDATE USERS SET NAME = $[name], PASSWORD = $[password], UPDATED_AT = NOW() WHERE id = $[id]',
     {
-      name: name,
-      id: id,
+      name,
+      id,
       password: hashedPassword,
     },
   );

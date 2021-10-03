@@ -2,12 +2,25 @@ import { Router } from 'express';
 
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 import CreateModulesService from '../services/modules/CreateModulesService';
+import GetModuleService from '../services/modules/GetModuleService';
 
-const moduleRoutes = Router();
+const moduleRouter = Router();
 
-moduleRoutes.use(ensureAuthenticated);
+moduleRouter.get('/:course_id', async (request, response) => {
+  try {
+    const { course_id } = request.params;
 
-moduleRoutes.post('/', async (request, response) => {
+    const modules = await GetModuleService({ course_id });
+
+    return response.json(modules);
+  } catch (error) {
+    return response.status(500).json({ error: error.message });
+  }
+});
+
+moduleRouter.use(ensureAuthenticated);
+
+moduleRouter.post('/', async (request, response) => {
   try {
     const { id } = request.user;
     const { course_id, title, video, content } = request.body;
@@ -24,4 +37,4 @@ moduleRoutes.post('/', async (request, response) => {
   }
 });
 
-export default moduleRoutes;
+export default moduleRouter;
