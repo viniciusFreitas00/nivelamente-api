@@ -50,4 +50,4 @@ async function CreateModulesServices({
   return module;
 }
 
-export default CreateModulesServices
+export default CreateModulesServices;

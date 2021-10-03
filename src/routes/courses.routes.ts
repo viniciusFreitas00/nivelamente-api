@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { query, Router } from 'express';
 import multer from 'multer';
 import uploadConfig from '../config/upload';
 
@@ -12,7 +12,9 @@ const coursesRouter = Router();
 
 coursesRouter.get('/', async (request, response) => {
   try {
-    const courses = await GetCoursesService({});
+    const teacherID = request.query.teacherID as string;
+
+    const courses = await GetCoursesService({ teacherID });
 
     return response.json(courses);
   } catch (error) {

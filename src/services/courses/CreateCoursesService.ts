@@ -1,5 +1,6 @@
 import database from '../../database';
 import Courses from '../../models/Courses';
+
 interface Request {
   id: string;
   title: string;
