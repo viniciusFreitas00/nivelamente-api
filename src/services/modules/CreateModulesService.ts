@@ -27,7 +27,7 @@ async function CreateModulesServices({
   id,
 }: Request): Promise<Response> {
   const checkUserAccess = await database.oneOrNone<Courses>(
-    'select *from courses where id = $[course_id] and user_id = $[id]',
+    'select * from courses where id = $[course_id] and user_id = $[id]',
     {
       id,
       course_id,
